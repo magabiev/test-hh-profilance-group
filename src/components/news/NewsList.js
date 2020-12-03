@@ -12,13 +12,18 @@ function NewsList() {
   const isUser = user.hasOwnProperty("login");
   const filteredNews = isUser ? news : approvedNews;
   const searchValue = useSelector((state) => state.users.searchValue);
-  const searchFilterNews = filteredNews.filter(
-    (item) => item.title.toUpperCase().indexOf(searchValue.toUpperCase()) !== -1
-  );
+  const searchFilterNews = filteredNews
+    .filter(
+      (item) =>
+        item.title.toUpperCase().indexOf(searchValue.toUpperCase()) !== -1
+    )
+    .reverse();
 
   useEffect(() => {
-    dispatch(loadNews());
-  }, [dispatch]);
+    if (!news.length) {
+      dispatch(loadNews());
+    }
+  }, [dispatch, news.length]);
 
   return (
     <div className="news-list">
