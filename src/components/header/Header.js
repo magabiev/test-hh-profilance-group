@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authShowToggled } from "../../redux/ducks/application";
 import { logOut } from "../../redux/ducks/users";
 
@@ -10,6 +10,8 @@ function Header() {
   const handleClickSignIn = () => {
     dispatch(authShowToggled());
   };
+  const user = useSelector((state) => state.users.user);
+  const isSignedIn = user.hasOwnProperty("login");
   const handleClickLogOut = () => {
     localStorage.removeItem("login");
     localStorage.removeItem("password");
@@ -25,12 +27,15 @@ function Header() {
         <div className="nav__item">
           <Link to="/news">Новости</Link>
         </div>
-        <div className="nav__item" onClick={handleClickSignIn}>
-          Вход
-        </div>
-        <div onClick={handleClickLogOut} className="nav__item">
-          Выход
-        </div>
+        {isSignedIn ? (
+          <div onClick={handleClickLogOut} className="nav__item">
+            Выход
+          </div>
+        ) : (
+          <div className="nav__item" onClick={handleClickSignIn}>
+            Вход
+          </div>
+        )}
       </div>
     </div>
   );
