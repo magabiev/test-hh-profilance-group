@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "User",
+      "admin": false,
+      "password": 12345
+    },
+    {
+      "id": 2,
+      "login": "Admin",
+      "admin": true,
+      "password": 12345
+    }
+  ],
+  "news": [
+    {
+      "id": 2,
+      "title": "New feature in React",
+      "text": "Lorem  ipsum че то там короче какой то длинный текст, или не длинный",
+      "date": "2019-11-09",
+      "verified": false
+    },
+    {
+      "id": 2,
+      "title": "New feature in Angular",
+      "text": "Lorem  ipsum че то там короче какой то длинный текст, или не длинный",
+      "date": "2019-11-09",
+      "verified": true
+    }
+  ]
+}
