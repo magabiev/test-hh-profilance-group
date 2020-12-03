@@ -1,4 +1,6 @@
 /** Types **/
+import { LOGIN_SUCCEED } from "./users";
+
 const AUTHORIZATION_SHOW_TOGGLE = "authorization/show/toggle";
 const ADD_NEWS_SHOW_TOGGLE = "addNews/show/toggle";
 
@@ -20,6 +22,11 @@ export default function application(state = initialState, action) {
       return {
         ...state,
         newsAddIsShow: !state.newsAddIsShow,
+      };
+    case LOGIN_SUCCEED:
+      return {
+        ...state,
+        authIsShow: false,
       };
     default:
       return {

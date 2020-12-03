@@ -29,26 +29,18 @@ function Authorization() {
     <div className="black">
       <div className="pop-up-block">
         <AuthHeader />
-        {click && !loading && !error ? (
-          <div className="authorization-success">Вход выполнен!</div>
-        ) : (
-          <>
-            <div
-              className={`wrong-data ${error && click && "wrong-data__show"}`}
-            >
-              Неверные данные
-            </div>
-            <Login handleChange={handleLogin} value={login} />
-            <Password handleChange={handlePass} value={pass} />
-            <button
-              disabled={loading}
-              onClick={authorization}
-              className="pop-up__button"
-            >
-              Войти
-            </button>
-          </>
-        )}
+        <div className={`wrong-data ${error && click && "wrong-data__show"}`}>
+          Неверные данные
+        </div>
+        <Login handleChange={handleLogin} value={login} />
+        <Password handleChange={handlePass} value={pass} />
+        <button
+          disabled={loading}
+          onClick={authorization}
+          className="pop-up__button"
+        >
+          Войти
+        </button>
       </div>
     </div>
   );

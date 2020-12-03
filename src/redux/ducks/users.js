@@ -2,9 +2,10 @@ import { get } from "../../api/api";
 
 /** Types **/
 const LOGIN_STARTED = "login/started";
-const LOGIN_SUCCEED = "login/load/succeed";
+export const LOGIN_SUCCEED = "login/load/succeed";
 const NEWS_SEARCH = "news/search";
 const LOGIN_ERROR = "login/error";
+const LOG_OUT = "log/out";
 
 /** State **/
 const initialState = {
@@ -41,6 +42,11 @@ export default function users(state = initialState, action) {
         loading: false,
         error: true,
       };
+    case LOG_OUT:
+      return {
+        ...state,
+        user: {},
+      };
     default:
       return {
         ...state,
@@ -70,4 +76,8 @@ export function loadUser(login, pass) {
 
 export function searchRequest(value) {
   return { type: NEWS_SEARCH, payload: value };
+}
+
+export function logOut() {
+  return { type: LOG_OUT };
 }

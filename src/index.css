@@ -166,15 +166,6 @@ body{
 .wrong-data__show{
   visibility: visible;
 }
-.authorization-success{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  width: 350px;
-  height: 300px;
-  color: #03ac03;
-}
 .adding-success{
   padding: 10px 0;
   text-align: center;

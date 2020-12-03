@@ -77,13 +77,10 @@ export function loadNews() {
 }
 
 export function addedNews(title, text) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch({ type: NEWS_ADD_STARTED });
-    const news = getState().news.items;
-    const id = news[news.length - 1].id + 1;
     const todayDate = dayjs().format("YYYY-MM-DD");
     post("news", {
-      id,
       title,
       text,
       date: todayDate,
