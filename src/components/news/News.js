@@ -1,8 +1,10 @@
 import React from "react";
 import NewsStatus from "./NewsStatus";
 import NewsOptions from "./NewsOptions";
+import { useSelector } from "react-redux";
 
 function News({ news }) {
+  const user = useSelector((state) => state.users.user);
   return (
     <div className="news">
       <div className="news__header">
@@ -13,7 +15,7 @@ function News({ news }) {
       <div className="news__item">
         <div className="news__date">{news.date}</div>
       </div>
-      <NewsOptions verified={news.verified} id={news.id} />
+      {user?.admin && <NewsOptions verified={news.verified} id={news.id} />}
     </div>
   );
 }

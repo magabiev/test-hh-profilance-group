@@ -6,12 +6,14 @@ const LOAD_STARTED = "news/load/started";
 const LOAD_SUCCEED = "news/load/succeed";
 const NEWS_DELETE = "news/delete";
 const NEWS_APPROVE = "news/approve";
-const NEWS_ADD = "news/add";
+const NEWS_ADD_STARTED = "news/add/started";
+const NEWS_ADD_SUCCEED = "news/add/succeed";
 
 /** State **/
 const initialState = {
   items: [],
   loading: false,
+  adding: false,
 };
 
 /** Reducer **/
@@ -37,6 +39,17 @@ export default function news(state = initialState, action) {
           }
           return item;
         }),
+      };
+    case NEWS_ADD_STARTED:
+      return {
+        ...state,
+        adding: true,
+      };
+    case NEWS_ADD_SUCCEED:
+      return {
+        ...state,
+        items: [...state.items, action.payload],
+        adding: false,
       };
     case NEWS_DELETE:
       return {
@@ -65,6 +78,7 @@ export function loadNews() {
 
 export function addedNews(title, text) {
   return (dispatch, getState) => {
+    dispatch({ type: NEWS_ADD_STARTED });
     const news = getState().news.items;
     const id = news[news.length - 1].id + 1;
     const todayDate = dayjs().format("YYYY-MM-DD");
@@ -76,7 +90,7 @@ export function addedNews(title, text) {
       verified: false,
     }).then((json) =>
       dispatch({
-        type: NEWS_ADD,
+        type: NEWS_ADD_SUCCEED,
         payload: json,
       })
     );

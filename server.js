@@ -15,9 +15,7 @@ const users = router.db.get("users");
 server.get("/authorization/login=:login/password=:password", (req, res) => {
   const user = users.find((item) => item.login === req.params.login);
   const password = user.toJSON().password;
-  return password === req.params.password
-    ? res.json(user)
-    : res.json();
+  return password === req.params.password ? res.json(user) : res.json();
 });
 
 server.use(router);

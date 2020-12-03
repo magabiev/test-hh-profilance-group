@@ -1,18 +1,25 @@
 /** Types **/
-const POP_UP_SHOW_TOGGLE = "popUp/show/toggle";
+const AUTHORIZATION_SHOW_TOGGLE = "authorization/show/toggle";
+const ADD_NEWS_SHOW_TOGGLE = "addNews/show/toggle";
 
 /** State **/
 const initialState = {
-  popUpIsShow: false,
+  authIsShow: false,
+  newsAddIsShow: false,
 };
 
 /** Reducer **/
 export default function application(state = initialState, action) {
   switch (action.type) {
-    case POP_UP_SHOW_TOGGLE:
+    case AUTHORIZATION_SHOW_TOGGLE:
       return {
         ...state,
-        popUpIsShow: !state.popUpIsShow,
+        authIsShow: !state.authIsShow,
+      };
+    case ADD_NEWS_SHOW_TOGGLE:
+      return {
+        ...state,
+        newsAddIsShow: !state.newsAddIsShow,
       };
     default:
       return {
@@ -22,6 +29,9 @@ export default function application(state = initialState, action) {
 }
 
 /** Actions **/
-export function popUpShowToggled() {
-  return { type: POP_UP_SHOW_TOGGLE };
+export function authShowToggled() {
+  return { type: AUTHORIZATION_SHOW_TOGGLE };
+}
+export function newsAddShowToggled() {
+  return { type: ADD_NEWS_SHOW_TOGGLE };
 }

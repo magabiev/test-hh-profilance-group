@@ -1,15 +1,16 @@
 import React from "react";
 
-function Password({ value }) {
+function Login({ value, handleChange }) {
   return (
     <div>
       <input
         value={value}
-        placeholder="Введите пароль"
+        onChange={handleChange}
+        placeholder="Введите логин"
         className="authorization__form"
       />
     </div>
   );
 }
 
-export default Password;
+export default Login;

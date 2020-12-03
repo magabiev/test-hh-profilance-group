@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { popUpShowToggled } from "../../redux/ducks/application";
+import { authShowToggled } from "../../redux/ducks/application";
 
 function Header() {
   const dispatch = useDispatch();
 
   const handleClickSignIn = () => {
-    dispatch(popUpShowToggled());
+    dispatch(authShowToggled());
   };
 
   return (
