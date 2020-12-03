@@ -20,6 +20,6 @@ server.get("/authorization/login=:login/password=:password", (req, res) => {
 
 server.use(router);
 
-server.listen(process.env.PORT || 3005, function () {
+server.listen(process.env.PORT || 80, function () {
   console.log("JSON Server is running");
 });
