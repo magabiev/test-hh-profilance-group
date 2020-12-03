@@ -1,5 +1,6 @@
 ### Для запуска приложения:
 ### `git clone https://github.com/magabiev/test-hh-profilance-group.git`
+### `cd test-hh-profilance-group`
 ### `npm install`
 ### `npm run dev`
 ### Данные для авторизации:
